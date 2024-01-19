@@ -1,0 +1,59 @@
+package encoderapp.PageObjects;
+
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
+
+import encoderapp.AbstractComponents.AbstractComponent;
+
+public class LandingPage extends AbstractComponent {
+
+	WebDriver driver;
+	
+	public LandingPage(WebDriver driver) {
+		super(driver);
+		this.driver = driver;
+		PageFactory.initElements(driver, this);
+	}
+	
+	//WebElement userEmails = driver.findElement(By.id("userEmail"));
+	//PageFactory
+	
+	@FindBy(name="username")
+	WebElement username;
+	
+	@FindBy(name="password")
+	WebElement password;
+	
+	@FindBy(css=".btn")
+	WebElement login;
+	
+	@FindBy(css="[src$='/icons/SM.svg']")
+	WebElement smLogo;
+	
+	@FindBy (css="[class*='text-base']")
+	WebElement errorMsg;
+	
+	
+	public void loginApplication(String userName, String pword) {
+		username.sendKeys(userName);
+		password.sendKeys(pword);
+		login.click();
+		
+	}
+	
+	public void goTo() {
+		driver.get("https://encoder.parking-stg.smop.asia/login/");
+	}
+	
+	public boolean successLogin() {
+		waitForWebElementToAppear(smLogo);
+		boolean logo = smLogo.isDisplayed();
+		return logo;
+	}
+
+	public String getErrorMsg() {
+		return errorMsg.getText();
+	}
+}

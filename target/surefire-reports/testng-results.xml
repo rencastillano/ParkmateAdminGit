@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results ignored="0" total="4" passed="4" failed="0" skipped="0">
+  <reporter-output>
+  </reporter-output>
+  <suite started-at="2024-01-08T09:56:44 CST" name="Suite" finished-at="2024-01-08T09:58:49 CST" duration-ms="125510">
+    <groups>
+    </groups>
+    <test started-at="2024-01-08T09:56:44 CST" name="Login Test" finished-at="2024-01-08T09:58:27 CST" duration-ms="102874">
+      <class name="encoderapp.Test.ErrorValidations">
+        <test-method is-config="true" signature="launchApplication()[pri:0, instance:encoderapp.Test.ErrorValidations@57a78e3]" started-at="2024-01-08T09:56:44 CST" name="launchApplication" finished-at="2024-01-08T09:57:50 CST" duration-ms="66470" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- launchApplication -->
+        <test-method signature="loginWithInvalidPassword()[pri:0, instance:encoderapp.Test.ErrorValidations@57a78e3]" started-at="2024-01-08T09:57:50 CST" name="loginWithInvalidPassword" finished-at="2024-01-08T09:58:00 CST" duration-ms="9610" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- loginWithInvalidPassword -->
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:encoderapp.Test.ErrorValidations@57a78e3]" started-at="2024-01-08T09:58:00 CST" name="tearDown" finished-at="2024-01-08T09:58:01 CST" duration-ms="1204" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+        <test-method is-config="true" signature="launchApplication()[pri:0, instance:encoderapp.Test.ErrorValidations@57a78e3]" started-at="2024-01-08T09:58:01 CST" name="launchApplication" finished-at="2024-01-08T09:58:11 CST" duration-ms="9797" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- launchApplication -->
+        <test-method signature="loginWithInvalidUserName()[pri:0, instance:encoderapp.Test.ErrorValidations@57a78e3]" started-at="2024-01-08T09:58:11 CST" name="loginWithInvalidUserName" finished-at="2024-01-08T09:58:12 CST" duration-ms="1099" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- loginWithInvalidUserName -->
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:encoderapp.Test.ErrorValidations@57a78e3]" started-at="2024-01-08T09:58:12 CST" name="tearDown" finished-at="2024-01-08T09:58:13 CST" duration-ms="1191" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+        <test-method is-config="true" signature="launchApplication()[pri:0, instance:encoderapp.Test.ErrorValidations@57a78e3]" started-at="2024-01-08T09:58:13 CST" name="launchApplication" finished-at="2024-01-08T09:58:22 CST" duration-ms="8925" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- launchApplication -->
+        <test-method signature="loginWithoutAccess()[pri:0, instance:encoderapp.Test.ErrorValidations@57a78e3]" started-at="2024-01-08T09:58:22 CST" name="loginWithoutAccess" finished-at="2024-01-08T09:58:25 CST" duration-ms="3245" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- loginWithoutAccess -->
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:encoderapp.Test.ErrorValidations@57a78e3]" started-at="2024-01-08T09:58:25 CST" name="tearDown" finished-at="2024-01-08T09:58:27 CST" duration-ms="1265" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+      </class> <!-- encoderapp.Test.ErrorValidations -->
+    </test> <!-- Login Test -->
+    <test started-at="2024-01-08T09:58:27 CST" name="ProfileSwitch Test" finished-at="2024-01-08T09:58:49 CST" duration-ms="22004">
+      <class name="encoderapp.Test.ProfileSwitchingTest">
+        <test-method is-config="true" signature="launchApplication()[pri:0, instance:encoderapp.Test.ProfileSwitchingTest@15a34df2]" started-at="2024-01-08T09:58:27 CST" name="launchApplication" finished-at="2024-01-08T09:58:36 CST" duration-ms="8857" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- launchApplication -->
+        <test-method signature="profileSwitch()[pri:0, instance:encoderapp.Test.ProfileSwitchingTest@15a34df2]" started-at="2024-01-08T09:58:36 CST" name="profileSwitch" finished-at="2024-01-08T09:58:48 CST" duration-ms="11873" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- profileSwitch -->
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:encoderapp.Test.ProfileSwitchingTest@15a34df2]" started-at="2024-01-08T09:58:48 CST" name="tearDown" finished-at="2024-01-08T09:58:49 CST" duration-ms="1270" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+      </class> <!-- encoderapp.Test.ProfileSwitchingTest -->
+    </test> <!-- ProfileSwitch Test -->
+  </suite> <!-- Suite -->
+</testng-results>

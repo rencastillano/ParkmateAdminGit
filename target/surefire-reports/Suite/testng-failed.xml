@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="Failed suite [Suite]" guice-stage="DEVELOPMENT" verbose="0">
+  <parameter name="browserName" value="edge"/>
+  <listeners>
+    <listener class-name="entryEncoder.Listeners"/>
+  </listeners>
+  <test thread-count="5" name="E2E Test(failed)" verbose="0">
+    <classes>
+      <class name="entryEncoder.EncoderTest">
+        <methods>
+          <include name="MotorcycleCapture"/>
+          <include name="LogoutApp"/>
+          <include name="InitializeBrowser"/>
+          <include name="SearchTest"/>
+          <include name="CarNumberCapturing"/>
+        </methods>
+      </class> <!-- entryEncoder.EncoderTest -->
+    </classes>
+  </test> <!-- E2E Test(failed) -->
+</suite> <!-- Failed suite [Suite] -->

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="Suite">
+
+	<listeners>
+		<listener class-name="encoderapp.TestComponents.ListenersNG" />
+	</listeners>
+	
+	<test thread-count="5" name="Login Test">
+    <classes>
+      <class name="encoderapp.Test.ErrorValidationsTest"/>
+    </classes>
+  </test> <!-- EncoderAppTest -->
+ 
+  <test thread-count="5" name="ProfileSwitch Test">
+    <classes>
+      <class name="encoderapp.Test.ProfileSwitchingTest"/>
+    </classes>
+  </test> <!-- EncoderAppTest -->
+   
+  <test thread-count="5" name="Capture Test">
+    <classes>
+      <class name="encoderapp.Test.VehicleNumberCaptureTest"/>
+    </classes>
+  </test>  <!--EncoderAppTest -->
+  
+  <test thread-count="5" name="Search Test">
+    <classes>
+      <class name="encoderapp.Test.VehicleSearchTest"/>
+    </classes>
+  </test>  <!--EncoderAppTest -->
+</suite> <!-- Suite -->
