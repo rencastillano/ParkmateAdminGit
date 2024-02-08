@@ -3,13 +3,12 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="encoderapp.Test.VehicleNumberCaptureTest">
+      <class name="encoderapp.Test.AllLoginTest">
         <methods>
-          <include name="carNumberCaptureTest"/>
           <include name="launchApplication"/>
-          <include name="tearDown"/>
+          <include name="webLoginRestrictedAccess"/>
         </methods>
-      </class> <!-- encoderapp.Test.VehicleNumberCaptureTest -->
+      </class> <!-- encoderapp.Test.AllLoginTest -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

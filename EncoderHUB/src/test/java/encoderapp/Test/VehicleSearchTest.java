@@ -4,30 +4,29 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import encoderapp.PageObjects.ProfileSwitch;
-import encoderapp.PageObjects.VehicleNumberCapturing;
+import encoderapp.PageObjects.PrinterOfflineVehicleNumberCapture;
 import encoderapp.PageObjects.VehicleNumberSearch;
 import encoderapp.TestComponents.BaseTest;
 
 public class VehicleSearchTest extends BaseTest{
 	
-	VehicleNumberCapturing vehicleNumberCapture;
+	PrinterOfflineVehicleNumberCapture vehicleNumberCapture;
 	@Test
 	public void carParkedVehicleSearch() throws InterruptedException {
-		
+		mobileAppSettings();
 		//need to change profile role to exit encoder
-		landingPage.loginApplication("staff01", "SMSupermalls1!");
-		Boolean smLogo = landingPage.successLogin();
-		Assert.assertTrue(smLogo);
+		landingPage.loginApplication("encoder01", "Password@1");
+		Assert.assertTrue(landingPage.successLogin());
 		
-		vehicleNumberCapture = new VehicleNumberCapturing(driver);
+		vehicleNumberCapture = new PrinterOfflineVehicleNumberCapture(driver);
 		String carNumInput = vehicleNumberCapture.carNumberCaptureInputs(generateRandomString());
 		vehicleNumberCapture.vehicleNumberInputConfirmation();
 		vehicleNumberCapture.stubNumberInput(generateRandomNumber(7));
 		vehicleNumberCapture.confirmCapture();
 		VehicleNumberSearch search = vehicleNumberCapture.doneCapture();
 		
-		ProfileSwitch profileSwitch = new ProfileSwitch(driver);
-		profileSwitch.ExitEncoderProfile();
+//		ProfileSwitch profileSwitch = new ProfileSwitch(driver);
+//		profileSwitch.ExitEncoderProfile();
 		
 		String expectedRes = search.parkedVehicleSearchExitEncoder(carNumInput);
 		Assert.assertEquals(expectedRes, carNumInput);
@@ -35,20 +34,19 @@ public class VehicleSearchTest extends BaseTest{
 	
 	@Test
 	public void motorcyleParkedVehicleSearch() throws InterruptedException {
+		mobileAppSettings();
+		landingPage.loginApplication("encoder01", "Password@1");
+		Assert.assertTrue(landingPage.successLogin());
 		
-		landingPage.loginApplication("staff01", "SMSupermalls1!");
-		Boolean smLogo = landingPage.successLogin();
-		Assert.assertTrue(smLogo);
-		
-		vehicleNumberCapture = new VehicleNumberCapturing(driver);
+		vehicleNumberCapture = new PrinterOfflineVehicleNumberCapture(driver);
 		String motorcycleNumInput = vehicleNumberCapture.motorcycleNumberCaptureInputs(generateRandomString());
 		vehicleNumberCapture.vehicleNumberInputConfirmation();
 		vehicleNumberCapture.stubNumberInput(generateRandomNumber(7));
 		vehicleNumberCapture.confirmCapture();
 		VehicleNumberSearch search = vehicleNumberCapture.doneCapture();
 		
-		ProfileSwitch profileSwitch = new ProfileSwitch(driver);
-		profileSwitch.ExitEncoderProfile();
+//		ProfileSwitch profileSwitch = new ProfileSwitch(driver);
+//		profileSwitch.ExitEncoderProfile();
 		
 		String expectedRes = search.parkedVehicleSearchExitEncoder(motorcycleNumInput);
 		Assert.assertEquals(expectedRes, motorcycleNumInput);

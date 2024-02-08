@@ -3,21 +3,31 @@ package encoderapp.TestComponents;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.nio.charset.StandardCharsets;
 import java.time.Duration;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Optional;
 import java.util.Properties;
 import java.util.Random;
 import java.util.concurrent.ThreadLocalRandom;
 import java.util.stream.Collectors;
 
 import org.apache.commons.io.FileUtils;
+import org.openqa.selenium.Dimension;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.devtools.DevTools;
+import org.openqa.selenium.devtools.v120.emulation.Emulation;
 import org.openqa.selenium.edge.EdgeDriver;
-import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
+
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 import encoderapp.PageObjects.LandingPage;
 import io.github.bonigarcia.wdm.WebDriverManager;
@@ -27,34 +37,31 @@ public class BaseTest {
 	public WebDriver driver;
 	public LandingPage landingPage;
 
-	public WebDriver initializeDriver() throws IOException {
-//		//properties class
-//		
+public WebDriver initializeDriver() throws IOException {
+		
 		Properties prop = new Properties();
 		FileInputStream fis = new FileInputStream(
 				System.getProperty("user.dir") + "\\src\\main\\java\\encoderapp\\Resources\\GlobalData.properties");
 		prop.load(fis);
 		String browserName = System.getProperty("browser")!=null ?System.getProperty("browser") :prop.getProperty("browserName");
 
-		switch (browserName.toLowerCase()) {
-		case "chrome":
+		if (browserName.contains("chrome")) {
+			ChromeOptions options = new ChromeOptions();
 			WebDriverManager.chromedriver().setup();
-			driver = new ChromeDriver();
-			break;
-		case "firefox":
-			WebDriverManager.firefoxdriver().setup();
-			driver = new FirefoxDriver();
-			break;
-		case "edge":
-			WebDriverManager.edgedriver().setup();
-			driver = new EdgeDriver();
+			if(browserName.contains("headless")){
+			options.addArguments("headless");
+			}		
+			driver = new ChromeDriver(options);
+			//driver.manage().window().setSize(new Dimension(1440,900));//full screen
 
-			break;
-		default:
-			System.out.println("Browser name is invalid");
+		} else if (browserName.equalsIgnoreCase("edge")) {
+			WebDriverManager.edgedriver().setup();
+			// Edge
+			driver = new EdgeDriver();
 		}
 
-		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(20));
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+		driver.manage().window().maximize();
 		return driver;
 	}
 
@@ -68,9 +75,23 @@ public class BaseTest {
 
 	}
 
-	@AfterMethod(alwaysRun = true)
+	//@AfterMethod(alwaysRun = true)
 	public void tearDown() {
 		driver.quit();
+	}
+	
+	public void mobileAppSettings() {
+	    // Cast WebDriver to ChromeDriver to access DevTools
+	    ChromeDriver chromeDriver = (ChromeDriver) driver;
+	    DevTools devTools = chromeDriver.getDevTools();
+	    
+	    // Create DevTools session
+	    devTools.createSession();
+	    
+	    devTools.send(Emulation.setDeviceMetricsOverride(360, 760, 2.625, true,
+	            Optional.empty(), Optional.empty(), Optional.empty(),
+	            Optional.empty(), Optional.empty(), Optional.empty(),
+	            Optional.empty(), Optional.empty(), Optional.empty()));
 	}
 
 	public String takeScreenshot(String testCaseName, WebDriver driver) throws IOException {
@@ -96,11 +117,29 @@ public class BaseTest {
 		return ThreadLocalRandom.current().ints(length, 0, source.length()).mapToObj(source::charAt)
 				.map(Object::toString).collect(Collectors.joining());
 	}
-
+	
 	public String generateRandomNumber(int length) {
 		Random random = new Random();
 		int randomNumber = random.nextInt((int) Math.pow(10, length));
 		return String.format("%0" + length + "d", randomNumber);
+	}
+	
+	//DataReader JSON to String
+	public List<HashMap<String, String>> getJsonDataToMap(String filePath) throws IOException
+	{
+		//read json to string
+	String jsonContent = 	FileUtils.readFileToString(new File(filePath), 
+			StandardCharsets.UTF_8);
+	
+	//String to HashMap- Jackson Databind
+	
+	ObjectMapper mapper = new ObjectMapper();
+	  List<HashMap<String, String>> data = mapper.readValue(jsonContent, new TypeReference<List<HashMap<String, String>>>() {
+      });
+	  return data;
+	
+	//{map, map}
+
 	}
 
 }

@@ -7,11 +7,11 @@ import org.openqa.selenium.support.PageFactory;
 
 import encoderapp.AbstractComponents.AbstractComponent;
 
-public class VehicleNumberCapturing extends AbstractComponent {
+public class PrinterOfflineVehicleNumberCapture extends AbstractComponent {
 
 	WebDriver driver;
 	
-	public VehicleNumberCapturing(WebDriver driver) {
+	public PrinterOfflineVehicleNumberCapture(WebDriver driver) {
 		super(driver);
 		this.driver = driver;
 		PageFactory.initElements(driver, this);

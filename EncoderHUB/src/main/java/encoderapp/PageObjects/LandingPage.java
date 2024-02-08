@@ -1,5 +1,6 @@
 package encoderapp.PageObjects;
 
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -38,8 +39,8 @@ public class LandingPage extends AbstractComponent {
 	
 	public void loginApplication(String userName, String pword) {
 		username.sendKeys(userName);
-		password.sendKeys(pword);
-		login.click();
+		password.sendKeys(pword,Keys.ENTER);
+		//login.click();
 		
 	}
 	
@@ -49,11 +50,11 @@ public class LandingPage extends AbstractComponent {
 	
 	public boolean successLogin() {
 		waitForWebElementToAppear(smLogo);
-		boolean logo = smLogo.isDisplayed();
-		return logo;
+		return smLogo.isDisplayed();
 	}
 
 	public String getErrorMsg() {
 		return errorMsg.getText();
 	}
+	
 }

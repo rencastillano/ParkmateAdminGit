@@ -1,5 +1,6 @@
 package encoderapp.PageObjects;
 
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -36,10 +37,11 @@ public class VehicleNumberSearch extends AbstractComponent {
 		
 		waitForElementToBeCklicable(viewParkedVehicleTab);
 		viewParkedVehicleTab.click();
-		searchInputBox.click();
-		searchInputBox.sendKeys(vehicleNumber);
-		searchBtn.click();
+		//searchInputBox.click();
+		searchInputBox.sendKeys(vehicleNumber, Keys.ENTER);
+		//searchBtn.click();
 		String searchResultText = searchResult.getText();
+		System.out.println(searchResultText);
 		captureVehicleTab.click();
 		return searchResultText;
 	}
